@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos - Projeto Resgate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../Css/painel-Voluntario.css">
+    <link rel="stylesheet" href="../Css/meus-projetos.css">
+</head>
+
+<body>
+    <div id="app" class="container-app">
+        <!-- Barra Lateral -->
+        <aside id="barra-lateral" class="barra-lateral">
+            <div class="logo-barra-lateral">
+                <i class="bi bi-heart-pulse-fill" style="color: #1A56DB; font-size: 1.5rem; margin-right: 8px;"></i>
+                Projeto Resgate
+            </div>
+            <nav class="navegacao-barra-lateral">
+                <ul id="menu-navegacao">
+                    <li>
+                        <a href="landing_page.html" id="link-inicio">
+                            <i class="bi bi-house fs-5 me-2"></i>
+                            Início
+                        </a>
+                    </li>
+                    <li>
+                        <a href="projetos.html" id="link-explorar">
+                            <i class="bi bi-search fs-5 me-2"></i>
+                            Explorar Projetos
+                        </a>
+                    </li>
+                    <li class="ativo">
+                        <a href="meus-projetos.html" id="link-meus-projetos">
+                            <i class="bi bi-check-circle fs-5 me-2"></i>
+                            Meus Projetos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="painel-Voluntario.html" id="link-perfil">
+                            <i class="bi bi-person fs-5 me-2"></i>
+                            Meu Perfil
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="rodape-barra-lateral">
+                <a href="#" onclick="Auth.sair(); return false;" id="link-sair-conta" class="link-sair">
+                    <i class="bi bi-box-arrow-right fs-5 me-2"></i>
+                    Sair da Conta
+                </a>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <div class="conteudo-principal">
+            <!-- Barra Superior -->
+            <header class="barra-superior">
+                <div class="barra-busca">
+                    <i class="bi bi-search fs-5 text-secondary"></i>
+                    <input type="text" id="input-busca" placeholder="Buscar em meus projetos..." />
+                </div>
+                <div class="acoes-barra-superior">
+                    <div id="perfil-usuario-topo" class="perfil-usuario">
+                        <div class="info-usuario">
+                            <span id="nome-usuario-logado" class="nome-usuario">JSON JS</span>
+                            <span class="funcao-usuario">Voluntária</span>
+                        </div>
+                        <div class="avatar-usuario">
+                            <i class="bi bi-person-circle fs-2 text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Conteúdo da Página -->
+            <main id="conteudo-pagina" class="conteudo-pagina">
+                <div class="migalhas-pao">
+                    <span>Início</span> / <span class="ativo">Meus Projetos</span>
+                </div>
+
+                <div class="cabecalho-pagina mb-4">
+                    <div class="titulo-pagina">
+                        <h1>Meus Projetos</h1>
+                        <p>Acompanhe o andamento das suas candidaturas, interações e contribuições voluntárias</p>
+                    </div>
+                </div>
+
+                <!-- Abas de Filtros de Status -->
+                <div id="abas-projetos" class="abas mb-4">
+                    <div id="aba-todos" class="aba ativo">Todos (<span id="count-todos">0</span>)</div>
+                    <div id="aba-andamento" class="aba">Em Andamento (<span id="count-andamento">0</span>)</div>
+                    <div id="aba-aguardando" class="aba">Aguardando Início (<span id="count-aguardando">0</span>)</div>
+                    <div id="aba-concluidos" class="aba">Concluídos (<span id="count-concluidos">0</span>)</div>
+                    <div id="aba-recusados" class="aba">Recusados (<span id="count-recusados">0</span>)</div>
+                </div>
+
+                <!-- Lista de Projetos -->
+                <div id="lista-minhas-candidaturas" class="lista-projetos-voluntario d-flex flex-column gap-3">
+                    <!-- Candidaturas renderizadas dinamicamente aqui -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal de Contato da Instituição -->
+    <div class="modal fade" id="modalContatoNGO" tabindex="-1" aria-labelledby="modalContatoNGOLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3 border-0 shadow-lg">
+                <div class="modal-header border-bottom pb-3">
+                    <h5 class="modal-title fw-bold text-dark" id="modalContatoNGOLabel">Contato da Organização</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-instituicao-modal d-flex align-items-center justify-content-center">
+                            <i class="bi bi-building fs-4 text-secondary"></i>
+                        </div>
+                        <div>
+                            <h4 id="modal-ngo-name" class="m-0 text-dark small fw-bold">ONG Letras Vivas</h4>
+                            <p class="m-0 text-secondary small">Organização Social Parceira</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex gap-3 align-items-center">
+                            <i class="bi bi-envelope text-secondary"></i>
+                            <div>
+                                <span class="d-block text-secondary small">E-mail para contato</span>
+                                <strong id="modal-ngo-email" class="text-dark small">contato@letrasvivas.org.br</strong>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <i class="bi bi-telephone text-secondary"></i>
+                            <div>
+                                <span class="d-block text-secondary small">Telefone / WhatsApp</span>
+                                <strong id="modal-ngo-phone" class="text-dark small">(19) 3256-4899</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0">
+                    <button type="button" class="btn btn-primary w-100 py-2 fw-bold text-white" data-bs-dismiss="modal">Fechar janela</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Js/database.js"></script>
+    <script src="../Js/auth.js"></script>
+    <script>
+        const sessao = Auth.protegerRota();
+        if (sessao && sessao.tipo !== 'voluntario') {
+            window.location.href = "painel-Instituicao.html";
+        }
+        
+        if (sessao) {
+            document.getElementById('nome-usuario-logado').textContent = sessao.nome;
+            
+            const candidaturas = Database.obterCandidaturas().filter(c => c.id_voluntario === sessao.id);
+            const container = document.getElementById('lista-minhas-candidaturas');
+            
+            if (candidaturas.length === 0) {
+                container.innerHTML = '<p class="text-secondary text-center p-4">Você ainda não se candidatou a nenhum projeto.</p>';
+            } else {
+                let html = '';
+                candidaturas.forEach(c => {
+                    const projeto = Database.obterProjetoPorId(c.id_projeto);
+                    if (!projeto) return;
+                    
+                    const ong = Database.obterOngPorId(projeto.id_ong);
+                    const nomeOng = ong ? ong.nome : 'ONG Desconhecida';
+                    const dataFormatada = c.data ? new Date(c.data).toLocaleDateString('pt-BR') : 'Data não registrada';
+                    
+                    html += `
+                    <div class="item-projeto-voluntario d-flex align-items-center justify-content-between p-3 border rounded-3 bg-white card-projeto borda-azul">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="icone-projeto-vol azul d-flex align-items-center justify-content-center">
+                                <i class="bi bi-heart-fill" style="color: #1A56DB; font-size: 1.2rem;"></i>
+                            </div>
+                            <div class="detalhes-projeto-vol">
+                                <h3 class="m-0 small fw-bold d-flex align-items-center gap-2">
+                                    ${projeto.titulo}
+                                    <span class="status-badge-vol status-aguardando">${c.status || 'Pendente'}</span>
+                                </h3>
+                                <p class="text-secondary small m-0 mb-1">${nomeOng}</p>
+                                <div class="meta-projeto-vol d-flex gap-3 text-secondary small">
+                                    <span><i class="bi bi-geo-alt me-1"></i> ${projeto.localizacao}</span>
+                                    <span>Candidatura: ${dataFormatada}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acoes-projeto-vol d-flex gap-2">
+                            <a href="detalhes-projeto.html?id=${projeto.id}" class="btn btn-outline-primary py-2 px-3 fw-bold small">Ver Detalhes</a>
+                        </div>
+                    </div>`;
+                });
+                container.innerHTML = html;
+                
+                const counts = {
+                    todos: candidaturas.length,
+                    andamento: candidaturas.filter(c => c.status && c.status.toLowerCase() === 'aprovado').length,
+                    aguardando: candidaturas.filter(c => !c.status || c.status.toLowerCase() === 'pendente').length,
+                    concluidos: candidaturas.filter(c => c.status && c.status.toLowerCase() === 'concluído').length,
+                    recusados: candidaturas.filter(c => c.status && c.status.toLowerCase() === 'recusado').length
+                };
+                
+                document.getElementById('count-todos').textContent = counts.todos;
+                document.getElementById('count-andamento').textContent = counts.andamento;
+                document.getElementById('count-aguardando').textContent = counts.aguardando;
+                document.getElementById('count-concluidos').textContent = counts.concluidos;
+                document.getElementById('count-recusados').textContent = counts.recusados;
+            }
+        }
+    </script>
+    
+    <script>
+        const modalContato = document.getElementById('modalContatoNGO');
+        if (modalContato) {
+            modalContato.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const ngoName = button.getAttribute('data-ngo-name');
+                const ngoEmail = button.getAttribute('data-ngo-email');
+                const ngoPhone = button.getAttribute('data-ngo-phone');
+                
+                document.getElementById('modal-ngo-name').textContent = ngoName;
+                document.getElementById('modal-ngo-email').textContent = ngoEmail;
+                document.getElementById('modal-ngo-phone').textContent = ngoPhone;
+            });
+        }
+    </script>
+</body>
+
+</html>

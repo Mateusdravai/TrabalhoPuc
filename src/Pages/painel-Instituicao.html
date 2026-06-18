@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../Css/painel-Instituicao.css">
+    <title>Painel da Instituição - Projeto Resgate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app" class="container-app">
+        <!-- Barra Lateral -->
+        <aside id="barra-lateral" class="barra-lateral">
+            <div class="logo-barra-lateral">
+                <i class="bi bi-heart-pulse-fill" style="color: #1A56DB; font-size: 1.5rem; margin-right: 8px;"></i> Projeto Resgate
+            </div>
+            <nav class="navegacao-barra-lateral">
+                <ul id="menu-navegacao">
+                    <li>
+                        <a href="landing_page.html" id="link-inicio">
+                            <i class="bi bi-house fs-5 me-2"></i>
+                            Início
+                        </a>
+                    </li>
+                    <li>
+                        <a href="projetos.html" id="link-explorar">
+                            <i class="bi bi-search fs-5 me-2"></i> Explorar Projetos
+                        </a>
+                    </li>
+                    <li class="ativo">
+                        <a href="painel-Instituicao.html" id="link-painel-instituicao">
+                            <i class="bi bi-person-badge fs-5 me-2"></i> Painel da Instituição
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#lista-projetos-vinculados" id="link-meus-projetos">
+                            <i class="bi bi-check-circle fs-5 me-2"></i> Meus Projetos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cadastro-projeto.html" id="link-criar-projeto">
+                            <i class="bi bi-plus-circle fs-5 me-2"></i> Criar Projeto
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="rodape-barra-lateral">
+                <a href="#" onclick="Auth.sair(); return false;" id="link-sair-conta" class="link-sair">
+                    <i class="bi bi-box-arrow-right fs-5 me-2"></i> Sair da Conta
+                </a>
+            </div>
+        </aside>
+
+        <!-- Conteudo Principal -->
+        <div class="conteudo-principal">
+            <!-- Barra Superior -->
+            <header class="barra-superior">
+                <div class="barra-busca">
+                    <i class="bi bi-search fs-5 me-2"></i>
+                    <input type="text" id="input-busca" placeholder="Buscar projetos, instituições ou voluntários...">
+                </div>
+                <div class="acoes-barra-superior">
+                    <a href="cadastro-projeto.html" id="btn-novo-projeto-topo" class="btn-primario" style="text-decoration:none;">Novo Projeto</a>
+                    <div id="perfil-usuario-topo" class="perfil-usuario">
+                        <div class="info-usuario">
+                            <span id="nome-usuario-logado" class="nome-usuario">JSON JS</span>
+                            <span class="funcao-usuario">Instituição</span>
+                        </div>
+                        <div class="avatar-usuario">
+                            <i class="bi bi-building fs-5 me-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Conteudo da Pagina -->
+            <main id="conteudo-pagina" class="conteudo-pagina">
+                <div class="cabecalho-pagina">
+                    <div class="titulo-pagina">
+                        <h1>Painel da Instituição</h1>
+                        <p>Gerencie o perfil institucional e os projetos da sua organização</p>
+                    </div>
+                    <div class="migalhas-pao">
+                        <span>Início</span> / <span class="ativo">Painel da Instituição</span>
+                    </div>
+                </div>
+
+                <!-- Cartao de Perfil -->
+                <div id="cartao-perfil-instituicao" class="cartao-perfil">
+                    <div class="cabecalho-perfil">
+                        <div class="principal-perfil">
+                            <div class="logo-perfil"><i class="bi bi-building" style="font-size: 48px; color: #9CA3AF;"></i></div>
+                            <div class="nome-perfil">
+                                <h2 id="ong-nome">JSON JS</h2>
+                                <p>JSON JS</p>
+                            </div>
+                        </div>
+                        <button id="btn-editar-perfil" class="btn-contorno">Editar Perfil</button>
+                    </div>
+                    <div class="detalhes-perfil">
+                        <div class="grupo-detalhe">
+                            <h4>DESCRIÇÃO</h4>
+                            <p id="ong-descricao" style="color: #6B7280;">Adicione uma descrição sobre a sua Instituição para que os voluntários possam conhecê-la melhor.</p>
+                        </div>
+                        <div class="grupo-detalhe">
+                            <h4>ÁREA DE ATUAÇÃO</h4>
+                            <p id="ong-causa">Não definida</p>
+                            <h4 style="margin-top: 16px;">LOCALIZAÇÃO</h4>
+                            <p id="ong-localizacao">Não definida</p>
+                        </div>
+                        <div class="grupo-detalhe">
+                            <h4>CONTATO</h4>
+                            <ul>
+                                <li>
+                                    <i class="bi bi-envelope text-secondary me-2"></i>
+                                    <span id="ong-email">Não definido</span>
+                                </li>
+                                <li><i class="bi bi-building text-secondary me-2"></i> CNPJ: <span id="ong-cnpj">Não definido</span></li>
+                                <li>
+                                    <i class="bi bi-telephone text-secondary me-2"></i>
+                                    <span id="ong-telefone">Não definido</span>
+                                </li>
+                            </ul>
+                            <h4 style="margin-top: 16px;">RESPONSÁVEL</h4>
+                            <p id="ong-responsavel">Não definido</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projetos Vinculados -->
+                <div class="cabecalho-secao">
+                    <h2>Projetos Vinculados</h2>
+                    <a href="cadastro-projeto.html" id="btn-criar-novo-projeto" class="btn-primario" style="text-decoration:none;">Criar Novo Projeto</a>
+                </div>
+
+                <div id="abas-projetos" class="abas mb-4">
+                    <div id="aba-ativos" class="aba ativo">Ativos (<span id="count-ativos">0</span>)</div>
+                    <div id="aba-revisao" class="aba">Em Revisão (<span id="count-revisao">0</span>)</div>
+                    <div id="aba-encerrados" class="aba">Encerrados (<span id="count-encerrados">0</span>)</div>
+                </div>
+
+                <div id="lista-projetos-vinculados" class="lista-projetos">
+                    <!-- Projetos serão renderizados dinamicamente aqui -->
+                </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Js/database.js"></script>
+    <script src="../Js/auth.js"></script>
+
+    <script>
+        // Protege a rota e garante que só ong acesse
+        const sessao = Auth.protegerRota();
+        if (sessao && sessao.tipo !== 'ong') {
+            window.location.href = "painel-Voluntario.html";
+        }
+
+        if (sessao) {
+            document.getElementById('nome-usuario-logado').textContent = sessao.nome;
+            
+            let ong = Database.obterOngPorId(sessao.id) || Database.obterOngPorEmailOuCnpj(sessao.email);
+            if(ong) {
+                // Atualizar cartão de perfil com dados da ONG
+                const h2Elements = document.querySelectorAll('.cartao-perfil h2');
+                if(h2Elements.length > 0) h2Elements[0].textContent = ong.nome;
+                
+                const pElements = document.querySelectorAll('.cartao-perfil .nome-perfil p');
+                if(pElements.length > 0) pElements[0].textContent = ong.causa || 'Instituição';
+                
+                // Injetar dados dinâmicos na tela principal
+                if (ong.descricao) {
+                    const descEl = document.getElementById('ong-descricao');
+                    descEl.textContent = ong.descricao;
+                    descEl.style.color = '#1E3A5F';
+                }
+                
+                document.getElementById('ong-causa').textContent = ong.causa || 'Não definida';
+                document.getElementById('ong-localizacao').textContent = ong.localizacao || 'Não definida';
+                document.getElementById('ong-email').textContent = ong.email || 'Não definido';
+                document.getElementById('ong-cnpj').textContent = ong.cnpj || 'Não definido';
+                document.getElementById('ong-telefone').textContent = ong.telefone || 'Não informado';
+                document.getElementById('ong-responsavel').textContent = ong.responsavel || 'Não definido';
+                
+                // Lógica de Edição Inline
+                const btnEditar = document.getElementById('btn-editar-perfil');
+                const camposEditaveis = [
+                    document.getElementById('ong-nome'),
+                    document.getElementById('ong-descricao'),
+                    document.getElementById('ong-causa'),
+                    document.getElementById('ong-localizacao'),
+                    document.getElementById('ong-telefone'),
+                    document.getElementById('ong-responsavel')
+                ];
+                
+                let editando = false;
+                
+                btnEditar.addEventListener('click', function() {
+                    editando = !editando;
+                    
+                    if (editando) {
+                        btnEditar.textContent = "Salvar Perfil";
+                        btnEditar.style.backgroundColor = "#1A56DB";
+                        btnEditar.style.color = "white";
+                        btnEditar.style.borderColor = "#1A56DB";
+                        
+                        camposEditaveis.forEach(campo => {
+                            if(campo) {
+                                campo.contentEditable = "true";
+                                campo.style.backgroundColor = "#f3f4f6";
+                                campo.style.padding = "4px 8px";
+                                campo.style.borderRadius = "4px";
+                                campo.style.outline = "2px dashed #1A56DB";
+                            }
+                        });
+                        
+                        camposEditaveis[0].focus();
+                        
+                    } else {
+                        btnEditar.textContent = "Editar Perfil";
+                        btnEditar.style.backgroundColor = "transparent";
+                        btnEditar.style.color = "#1E3A5F";
+                        btnEditar.style.borderColor = "#e2e8f0";
+                        
+                        camposEditaveis.forEach(campo => {
+                            if(campo) {
+                                campo.contentEditable = "false";
+                                campo.style.backgroundColor = "transparent";
+                                campo.style.padding = "0";
+                                campo.style.outline = "none";
+                            }
+                        });
+                        
+                        // Salvar no banco
+                        ong.nome = camposEditaveis[0].innerText.trim() || ong.nome;
+                        ong.descricao = camposEditaveis[1].innerText.trim() || ong.descricao;
+                        ong.causa = camposEditaveis[2].innerText.trim() || ong.causa;
+                        ong.localizacao = camposEditaveis[3].innerText.trim() || ong.localizacao;
+                        ong.telefone = camposEditaveis[4].innerText.trim() || ong.telefone;
+                        ong.responsavel = camposEditaveis[5].innerText.trim() || ong.responsavel;
+                        
+                        Database.salvarOng(ong);
+                        
+                        sessao.nome = ong.nome;
+                        Auth.iniciarSessao('ong', sessao);
+                        
+                        document.getElementById('nome-usuario-logado').textContent = sessao.nome;
+                    }
+                });
+
+                // Renderizar Projetos
+                const projetos = Database.obterProjetosPorOng(ong.id);
+                const containerProjetos = document.getElementById('lista-projetos-vinculados');
+                
+                if (projetos.length === 0) {
+                    containerProjetos.innerHTML = '<p style="padding: 20px; color: #6b7280; text-align: center;">Nenhum projeto cadastrado ainda.</p>';
+                } else {
+                    let html = '';
+                    projetos.forEach(p => {
+                        const candidaturas = Database.obterCandidaturas().filter(c => c.id_projeto === p.id);
+                        
+                        html += `
+                        <div class="item-projeto">
+                            <div class="info-projeto">
+                                <div class="icone-projeto azul" style="display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-heart text-white fs-4"></i>
+                                </div>
+                                <div class="detalhes-projeto">
+                                    <h3>${p.titulo}<span class="status-badge ativo">Ativo</span></h3>
+                                    <div class="meta-projeto">
+                                        <span><i class="bi bi-geo-alt text-secondary me-1"></i> ${p.localizacao}</span>
+                                        <span><i class="bi bi-heart text-secondary me-1"></i> ${p.causa}</span>
+                                        <span><i class="bi bi-calendar text-secondary me-1"></i> ${new Date(p.dataCriacao).toLocaleDateString('pt-BR')}</span>
+                                        <span><i class="bi bi-person text-secondary me-1"></i> ${p.vagas} vagas</span>
+                                        <span><i class="bi bi-people text-secondary me-1"></i> ${candidaturas.length} interessados</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="acoes-projeto" style="align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <a href="detalhes-projeto.html?id=${p.id}" class="btn-primario" style="padding: 8px 16px; text-decoration: none;"><i class="bi bi-eye me-1"></i>Ver Detalhes</a>
+                                <a href="cadastro-projeto.html?edit=${p.id}" class="btn-contorno" style="padding: 8px 16px; text-decoration: none;"><i class="bi bi-pencil me-1"></i>Editar</a>
+                                <button class="btn-contorno btn-excluir-projeto" data-id="${p.id}" style="padding: 8px 16px; color: #DC2626; border-color: #DC2626;"><i class="bi bi-trash me-1"></i>Excluir</button>
+                            </div>
+                        </div>`;
+                    });
+                    containerProjetos.innerHTML = html;
+                    
+                    // Event listeners para exclusão
+                    document.querySelectorAll('.btn-excluir-projeto').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id');
+                            if (confirm('Tem certeza que deseja excluir este projeto? Todas as candidaturas vinculadas também serão removidas. Esta ação não pode ser desfeita.')) {
+                                Database.excluirProjeto(id);
+                                alert('Projeto excluído com sucesso!');
+                                window.location.reload();
+                            }
+                        });
+                    });
+                }
+                
+                // Contadores dinâmicos
+                const countAtivos = projetos.filter(p => p.status === 'ativo' || !p.status || p.status === '').length;
+                const countRevisao = projetos.filter(p => p.status === 'revisao').length;
+                const countEncerrados = projetos.filter(p => p.status === 'encerrado').length;
+                
+                document.getElementById('count-ativos').textContent = countAtivos;
+                document.getElementById('count-revisao').textContent = countRevisao;
+                document.getElementById('count-encerrados').textContent = countEncerrados;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar Projetos - Projeto Resgate</title>
+    <!-- Bootstrap CSS (Versão correta 5.3.3) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Estilo Geral do Dashboard (Herdado para consistência) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../Css/global.css">
+    <link rel="stylesheet" href="../Css/painel-Voluntario.css">
+    <!-- Estilo Específico da página de Explorar Projetos -->
+    <link rel="stylesheet" href="../Css/projetos.css">
+</head>
+
+<body>
+    <div id="app" class="container-app">
+        <!-- Barra Lateral -->
+        <aside id="barra-lateral" class="barra-lateral">
+            <div class="logo-barra-lateral">
+                <i class="bi bi-heart-pulse-fill" style="color: #1A56DB; font-size: 1.5rem; margin-right: 8px;"></i>
+                Projeto Resgate
+            </div>
+            <nav class="navegacao-barra-lateral">
+                <ul id="menu-navegacao">
+                    <li>
+                        <a href="landing_page.html" id="link-inicio">
+                            <i class="bi bi-house fs-5 me-2"></i>
+                            Início
+                        </a>
+                    </li>
+                    <li class="ativo">
+                        <a href="projetos.html" id="link-explorar">
+                            <i class="bi bi-search fs-5 me-2"></i>
+                            Explorar Projetos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="meus-projetos.html" id="link-meus-projetos">
+                            <i class="bi bi-check-circle fs-5 me-2"></i>
+                            Meus Projetos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="painel-Voluntario.html" id="link-perfil">
+                            <i class="bi bi-person fs-5 me-2"></i>
+                            Meu Perfil
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="rodape-barra-lateral">
+                <a href="#" onclick="Auth.sair(); return false;" id="link-sair-conta" class="link-sair">
+                    <i class="bi bi-box-arrow-right fs-5 me-2"></i>
+                    Sair da Conta
+                </a>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <div class="conteudo-principal">
+            <!-- Barra Superior -->
+            <header class="barra-superior">
+                <div class="barra-busca">
+                    <i class="bi bi-search fs-5 text-secondary"></i>
+                    <input type="text" id="input-busca" placeholder="Buscar projetos por palavra-chave..." />
+                </div>
+                <div class="acoes-barra-superior">
+                    <div id="perfil-usuario-topo" class="perfil-usuario">
+                        <div class="info-usuario">
+                            <span id="nome-usuario-logado" class="nome-usuario">JSON JS</span>
+                            <span class="funcao-usuario">Voluntária</span>
+                        </div>
+                        <div class="avatar-usuario">
+                            <i class="bi bi-person-circle fs-2 text-secondary" style="margin-right: 0;"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Conteúdo da Página -->
+            <main id="conteudo-pagina" class="conteudo-pagina">
+                <div class="migalhas-pao">
+                    <span>Início</span> / <span class="ativo">Explorar Projetos</span>
+                </div>
+
+                <div class="cabecalho-pagina mb-4">
+                    <div class="titulo-pagina">
+                        <h1>Explorar Oportunidades</h1>
+                        <p>Descubra projetos sociais que precisam da sua ajuda e faça a diferença hoje</p>
+                    </div>
+                </div>
+
+                <!-- Estrutura em Grade do Bootstrap -->
+                <div class="row g-4">
+                    <!-- Coluna de Filtros (Esquerda) -->
+                    <div class="col-lg-3">
+                        <div class="cartao p-4 filtro-container">
+                            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                                <h2 class="titulo-cartao m-0">Filtros</h2>
+                                <a href="#" class="text-decoration-none text-muted small" id="btn-limpar-filtros">Limpar</a>
+                            </div>
+
+                            <!-- Filtro de Causa -->
+                            <div class="filtro-grupo mb-4">
+                                <label class="rotulo-filtro fw-bold mb-2">Causa Social</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="sustentabilidade" id="causa-sustentabilidade">
+                                    <label class="form-check-label text-dark small" for="causa-sustentabilidade">Sustentabilidade</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="alfabetizacao" id="causa-alfabetizacao">
+                                    <label class="form-check-label text-dark small" for="causa-alfabetizacao">Alfabetização</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="inclusao" id="causa-inclusao">
+                                    <label class="form-check-label text-dark small" for="causa-inclusao">Inclusão Social</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="fome" id="causa-fome">
+                                    <label class="form-check-label text-dark small" for="causa-fome">Combate à Fome</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="educacao" id="causa-educacao">
+                                    <label class="form-check-label text-dark small" for="causa-educacao">Educação</label>
+                                </div>
+                            </div>
+
+                            <!-- Filtro de Localização -->
+                            <div class="filtro-grupo mb-4">
+                                <label for="filtro-local" class="rotulo-filtro fw-bold mb-2">Localização</label>
+                                <select class="form-select form-select-sm text-dark" id="filtro-local">
+                                    <option value="" selected>Todas as cidades</option>
+                                    <option value="sp">São Paulo, SP</option>
+                                    <option value="bh">Belo Horizonte, MG</option>
+                                    <option value="campinas">Campinas, SP</option>
+                                    <option value="curitiba">Curitiba, PR</option>
+                                </select>
+                            </div>
+
+                            <!-- Filtro de Modalidade -->
+                            <div class="filtro-grupo mb-4">
+                                <label class="rotulo-filtro fw-bold mb-2">Formato</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="presencial" id="formato-presencial">
+                                    <label class="form-check-label text-dark small" for="formato-presencial">Presencial</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="remoto" id="formato-remoto">
+                                    <label class="form-check-label text-dark small" for="formato-remoto">Remoto / Online</label>
+                                </div>
+                            </div>
+
+                            <!-- Filtro de Disponibilidade -->
+                            <div class="filtro-grupo mb-4">
+                                <label class="rotulo-filtro fw-bold mb-2">Disponibilidade</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="semana" id="disp-semana">
+                                    <label class="form-check-label text-dark small" for="disp-semana">Dias de semana</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" value="fds" id="disp-fds">
+                                    <label class="form-check-label text-dark small" for="disp-fds">Finais de semana</label>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary w-100 btn-aplicar-filtros fw-bold text-white py-2">Filtrar Projetos</button>
+                        </div>
+                    </div>
+
+                    <!-- Coluna de Projetos (Direita) -->
+                    <div class="col-lg-9">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-secondary small">Mostrando 6 oportunidades encontradas</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-secondary small text-nowrap">Ordenar por:</span>
+                                <select class="form-select form-select-sm text-dark bg-white border" style="width: auto;">
+                                    <option value="recente" selected>Mais Recentes</option>
+                                    <option value="vagas">Número de Vagas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Grid de Cards de Projetos -->
+                        <div class="row g-4" id="lista-projetos-dinamica">
+                            <!-- Projetos renderizados via JS -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Bootstrap Bundle (Versão correta 5.3.3) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Js/database.js"></script>
+    <script src="../Js/auth.js"></script>
+    <script>
+        const sessao = Auth.obterSessao();
+        if (sessao) {
+            document.getElementById('nome-usuario-logado').textContent = sessao.nome;
+            // Se for ONG, esconde a opção "Meus Projetos" do menu se houver necessidade.
+        }
+
+        const projetos = Database.obterProjetos();
+        const container = document.getElementById('lista-projetos-dinamica');
+        
+        let html = '';
+        projetos.forEach(p => {
+            const ong = Database.obterOngPorId(p.id_ong);
+            const nomeOng = ong ? ong.nome : 'ONG Desconhecida';
+            
+            html += `
+            <div class="col-md-6 col-xl-4">
+                <div class="cartao h-100 d-flex flex-column card-projeto borda-azul">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge-causa verde">
+                            <i class="bi bi-heart text-white me-1"></i> ${p.causa}
+                        </span>
+                    </div>
+                    <h3 class="titulo-projeto-card mb-2">${p.titulo}</h3>
+                    <p class="nome-instituicao-card text-secondary small mb-3">${nomeOng}</p>
+                    <p class="descricao-projeto-card text-dark small flex-grow-1">${p.descricao}</p>
+                    <div class="meta-card mb-3 pt-2 border-top border-light d-flex flex-wrap gap-2 text-secondary small">
+                        <span><i class="bi bi-geo-alt text-secondary me-1"></i> ${p.localizacao}</span>
+                        <span><i class="bi bi-person text-secondary me-1"></i> ${p.vagas} vagas</span>
+                    </div>
+                    <a href="detalhes-projeto.html?id=${p.id}" class="btn btn-outline-primary w-100 fw-bold py-2 mt-auto">Ver Detalhes</a>
+                </div>
+            </div>`;
+        });
+        
+        container.innerHTML = html;
+        document.querySelector('.text-secondary.small').textContent = `Mostrando ${projetos.length} oportunidades encontradas`;
+    </script>
+</body>
+
+</html>
