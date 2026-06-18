@@ -1,0 +1,250 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #f5f7fb;
+  overflow-x: hidden;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Lado esquerdo */
+.esquerda {
+  position: relative;
+  flex: 1;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/src/assets/lado-esquerdo.png") center/cover no-repeat;
+
+  color: white;
+  padding: 40px;
+
+  animation: fadeEsquerda 0.8s ease-out;
+}
+
+/* Logo */
+.logo-container {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  animation: subir 0.8s ease-out;
+}
+
+.logo-container img {
+  width: 40px;
+}
+
+.logo-container span {
+  font-weight: 600;
+}
+
+/* Texto */
+.texto {
+  position: absolute;
+  top: 30%;
+  left: 40px;
+  max-width: 450px;
+
+  animation: subir 0.8s ease-out;
+}
+
+.texto h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* lado direita */
+.direita {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadeDireita 0.8s ease;
+}
+
+.formulario {
+  width: 100%;
+  padding: 30px;
+}
+
+/* Link voltar ao site */
+.voltar {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #1a56db;
+  text-decoration: none;
+}
+
+/* Tipo de cadastro: Voluntário ou Instituição */
+.tipoCadastro {
+  display: flex;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.tipoCadastro button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tipoCadastro button:hover {
+  background: #ddd;
+  border-radius: 8px;
+}
+
+.tipoCadastro .ativo {
+  background: #1a56db;
+  color: white;
+  border-radius: 8px;
+}
+
+/* CAMPOS */
+.grupo {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  transition: 0.2s;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #1a56db;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
+  outline: none;
+}
+
+/* Botão */
+.botao {
+  width: 100%;
+  padding: 12px;
+  background: #1a56db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.botao:active {
+  transform: scale(0.98);
+}
+
+/* Link cadastro */
+.link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* Animações */
+@keyframes fadeEsquerda {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeDireita {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .esquerda {
+    height: auto;
+    padding-bottom: 60px;
+    flex: none;
+  }
+
+  .texto {
+    position: static;
+    margin-top: 30px;
+  }
+
+  .logo-container {
+    position: static;
+    margin-bottom: 10px;
+  }
+}

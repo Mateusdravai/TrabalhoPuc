@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/cadastro.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Login - Projeto Resgate</title>
+    <style>
+        .tipoCadastro button {
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .tipoCadastro button.ativo {
+            background-color: #1A56DB;
+            color: white;
+            border-color: #1A56DB;
+        }
+        #form-login-instituicao { display: none; }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="esquerda" style="background-color: white; color: #1A56DB; border-right: 1px solid #e5e7eb;">
+            <div class="logo-container">
+                <span style="color: #1A56DB; font-weight: bold;">Projeto Resgate</span>
+            </div>
+            <div class="texto">
+                <h1 style="color: #1A56DB;">Conectando pessoas que transformam vidas</h1>
+                <p style="color: #1A56DB;">Voluntários e instituições juntos gerando impacto social.</p>
+            </div>
+        </section>
+
+        <section class="direita">
+            <div class="formulario">
+
+                <a href="landing_page.html" id="link-voltar" class="voltar">← Voltar ao site</a>
+
+                <div id="tipo-cadastro-container" class="tipoCadastro">
+                    <button id="btn-voluntario" type="button" class="ativo">Voluntário</button>
+                    <button id="btn-instituicao" type="button">Instituição</button>
+                </div>
+
+                <!-- Formulário Voluntário -->
+                <form id="form-login-voluntario">
+                    <div class="grupo">
+                        <label for="email-vol">E-mail</label>
+                        <input id="email-vol" name="email" type="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="grupo">
+                        <label for="senha-vol">Senha</label>
+                        <input id="senha-vol" name="senha" type="password" placeholder="********">
+                    </div>
+                    <button id="btn-submit-vol" type="submit" class="botao">Entrar</button>
+                    <div class="link">
+                        Ainda não tem conta? <a href="cadastro-voluntario.html" id="link-cadastro-vol">Cadastrar como voluntário</a>
+                    </div>
+                </form>
+
+                <!-- Formulário Instituição -->
+                <form id="form-login-instituicao">
+                    <div class="grupo">
+                        <label for="cnpj">CNPJ ou E-mail</label>
+                        <input id="cnpj" name="cnpj" type="text" placeholder="00.000.000/0000-00 ou email@ong.org">
+                    </div>
+                    <div class="grupo">
+                        <label for="senha-inst">Senha</label>
+                        <input id="senha-inst" name="senha" type="password" placeholder="********">
+                    </div>
+                    <button id="btn-submit-inst" type="submit" class="botao">Entrar</button>
+                    <div class="link">
+                        Ainda não tem conta? <a href="cadastro-ong.html" id="link-cadastro-inst">Cadastrar minha organização</a>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Js/database.js"></script>
+    <script src="../Js/auth.js"></script>
+
+    <script>
+        // Se já estiver logado, nem mostra a tela de login
+        Auth.redirecionarSeLogado();
+
+        const btnVol = document.getElementById('btn-voluntario');
+        const btnInst = document.getElementById('btn-instituicao');
+        const formVol = document.getElementById('form-login-voluntario');
+        const formInst = document.getElementById('form-login-instituicao');
+
+        btnVol.addEventListener('click', function () {
+            btnVol.classList.add('ativo');
+            btnInst.classList.remove('ativo');
+            formVol.style.display = 'block';
+            formInst.style.display = 'none';
+        });
+
+        btnInst.addEventListener('click', function () {
+            btnInst.classList.add('ativo');
+            btnVol.classList.remove('ativo');
+            formInst.style.display = 'block';
+            formVol.style.display = 'none';
+        });
+
+        // Autenticação
+        formVol.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email-vol').value;
+            const senha = document.getElementById('senha-vol').value;
+            
+            if(Auth.loginVoluntario(email, senha)) {
+                window.location.href = "painel-Voluntario.html";
+            } else {
+                alert("E-mail ou senha incorretos.");
+            }
+        });
+
+        formInst.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const cnpj = document.getElementById('cnpj').value;
+            const senha = document.getElementById('senha-inst').value;
+            
+            if(Auth.loginOng(cnpj, senha)) {
+                window.location.href = "painel-Instituicao.html";
+            } else {
+                alert("CNPJ/E-mail ou senha incorretos.");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,622 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  --cor-primaria: #0d6efd;
+  --cor-primaria-clara: #e6f0ff;
+  --texto-escuro: #1e293b;
+  --texto-cinza: #64748b;
+  --cor-fundo: #f8fafc;
+  --fundo-cartao: #ffffff;
+  --cor-borda: #e2e8f0;
+  --sucesso: #10b981;
+  --aviso: #f59e0b;
+  --perigo: #ef4444;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--texto-escuro);
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.container-app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Barra Lateral */
+.barra-lateral {
+  width: 260px;
+  background-color: var(--fundo-cartao);
+  border-right: 1px solid var(--cor-borda);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo-barra-lateral {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.icone-simples {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.navegacao-barra-lateral {
+  flex: 1;
+  padding: 24px 16px;
+  overflow-y: auto;
+}
+
+.navegacao-barra-lateral ul {
+  list-style: none;
+}
+
+.navegacao-barra-lateral li {
+  margin-bottom: 8px;
+}
+
+.navegacao-barra-lateral a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: var(--texto-cinza);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navegacao-barra-lateral a:hover {
+  background-color: var(--cor-fundo);
+  color: var(--texto-escuro);
+}
+
+.navegacao-barra-lateral li.ativo a {
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
+}
+
+.rodape-barra-lateral {
+  padding: 24px 16px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.link-sair {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: var(--perigo);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* Conteudo Principal */
+.conteudo-principal {
+  flex: 1;
+  margin-left: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra Superior */
+.barra-superior {
+  height: 70px;
+  background-color: var(--fundo-cartao);
+  border-bottom: 1px solid var(--cor-borda);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.barra-busca {
+  display: flex;
+  align-items: center;
+  background-color: var(--cor-fundo);
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 400px;
+  border: 1px solid var(--cor-borda);
+}
+
+.barra-busca input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--texto-escuro);
+  margin-left: 8px;
+}
+
+.acoes-barra-superior {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-icone {
+  background: none;
+  border: none;
+  color: var(--texto-cinza);
+  font-size: 1.25rem;
+  cursor: pointer;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
+}
+
+.notificacao-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--perigo);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+  background-color: #0b5ed7;
+}
+
+.perfil-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.info-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nome-usuario {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.funcao-usuario {
+  font-size: 0.75rem;
+  color: var(--texto-cinza);
+}
+
+.avatar-usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--cor-primaria-clara);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-primaria);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.avatar-usuario img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Conteudo da Pagina */
+.conteudo-pagina {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cabecalho-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.titulo-pagina h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.titulo-pagina p {
+  color: var(--texto-cinza);
+  font-size: 0.9rem;
+}
+
+.migalhas-pao {
+  color: var(--texto-cinza);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.migalhas-pao span.ativo {
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+/* Info Projeto Analise */
+.info-projeto-analise {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  background-color: transparent;
+}
+
+.icone-projeto-analise {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.info-projeto-analise h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--texto-escuro);
+}
+
+/* Cartão Candidato */
+.cartao-candidato {
+  background-color: var(--fundo-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.secao-candidato {
+  padding: 32px;
+  position: relative;
+}
+
+.divisor {
+  border: 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.acoes-candidato {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-aprovar {
+  background-color: white;
+  border: 1px solid var(--cor-borda);
+  color: var(--texto-escuro);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-aprovar img {
+  filter: hue-rotate(200deg) saturate(3);
+}
+
+.btn-recusar {
+  background-color: white;
+  border: 1px solid var(--cor-borda);
+  color: var(--texto-escuro);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.titulo-secao-interna {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--texto-escuro);
+}
+
+/* Seção 1 */
+.conteudo-dados {
+  display: flex;
+  gap: 40px;
+  margin-top: 8px;
+}
+
+.foto-candidato {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.foto-candidato img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dados-cadastrais-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 16px;
+}
+
+.grupo-dado {
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo-dado label {
+  font-size: 0.75rem;
+  color: var(--texto-cinza);
+  margin-bottom: 4px;
+  padding-left: 8px;
+}
+
+.grupo-dado input {
+  padding: 10px 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--texto-escuro);
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+  width: 100%;
+}
+
+/* Seção 2: Biografia */
+.caixa-biografia {
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 24px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--texto-escuro);
+}
+
+/* Seções 3 e 4 */
+.grade-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.coluna-dado {
+  padding: 0 32px;
+}
+
+.borda-direita {
+  border-right: 1px solid var(--cor-borda);
+  padding-left: 0;
+}
+
+.padding-esquerda {
+  padding-left: 48px;
+}
+
+.lista-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+}
+
+.tag-texto {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tag-texto.azul {
+  color: var(--cor-primaria);
+}
+
+.lista-disponibilidade {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+}
+
+.lista-disponibilidade li {
+  font-size: 0.85rem;
+  color: var(--texto-escuro);
+}
+
+.grid-causas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-left: 16px;
+}
+
+.tag-causa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tag-causa.verde { color: #16a34a; }
+.tag-causa.amarelo { color: #d97706; }
+.tag-causa.roxo { color: #9333ea; }
+.tag-causa.vermelho { color: #dc2626; }
+
+.icone-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.icone-img-pequeno {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+  .container-app {
+    flex-direction: column;
+  }
+  .barra-lateral {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+  .logo-barra-lateral {
+    justify-content: center;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+  .navegacao-barra-lateral {
+    padding: 10px 16px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .navegacao-barra-lateral::-webkit-scrollbar {
+    display: none;
+  }
+  .navegacao-barra-lateral ul {
+    display: flex;
+    gap: 12px;
+  }
+  .navegacao-barra-lateral a {
+    white-space: nowrap;
+  }
+  .rodape-barra-lateral {
+    display: flex;
+    justify-content: center;
+    padding: 12px 16px;
+    border-top: 1px solid var(--cor-borda);
+  }
+  .link-sair {
+    width: 100%;
+    justify-content: center;
+  }
+  .conteudo-principal {
+    margin-left: 0;
+  }
+  .barra-superior {
+    height: auto;
+    flex-direction: column-reverse;
+    padding: 16px;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .barra-busca {
+    width: 100%;
+  }
+  .acoes-barra-superior {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .conteudo-dados {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dados-cadastrais-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .grade-2-col {
+    grid-template-columns: 1fr;
+  }
+  .borda-direita {
+    border-right: none;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+  }
+  .padding-esquerda {
+    padding-left: 0;
+  }
+  .acoes-candidato {
+    position: static;
+    margin-bottom: 32px;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

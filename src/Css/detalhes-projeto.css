@@ -1,0 +1,237 @@
+/* Folha de Estilos de Detalhes do Projeto - Projeto Resgate */
+
+:root {
+  --azul-principal: #1A56DB;
+  --azul-escuro: #1E3A5F;
+  --verde: #057A55;
+  --laranja: #FF8C00;
+  --vermelho: #E02424;
+  --rosa: #be185d;
+  --cinza-claro: #F9FAFB;
+  --cinza-medio: #6B7280;
+  --branco: #FFFFFF;
+  --cor-borda: #e2e8f0;
+}
+
+/* Tipografia e Textos */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.text-shadow-sm {
+  text-shadow: 0 2px 4px rgba(30, 58, 95, 0.4);
+}
+
+.titulo-cartao-detalhes {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 12px;
+}
+
+.subtitulo-detalhes {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+}
+
+.texto-corpo {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--azul-escuro);
+  margin-bottom: 16px;
+}
+
+/* Banner Hero */
+.banner-projeto-hero {
+  min-height: 220px;
+  background: linear-gradient(135deg, #1E3A5F 0%, #1A56DB 100%);
+  border-radius: 12px;
+}
+
+.overlay-gradiente {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(30, 58, 95, 0.8) 0%, rgba(30, 58, 95, 0.1) 100%);
+}
+
+.badge-causa.amarelo-hero {
+  background-color: var(--laranja);
+  color: var(--branco);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Listas */
+.lista-atividades-detalhes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-atividades-detalhes li {
+  font-size: 14px;
+  color: var(--azul-escuro);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lista-requisitos-detalhes {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.lista-requisitos-detalhes li {
+  margin-bottom: 8px;
+  color: var(--azul-escuro);
+}
+
+/* Tags de Habilidades */
+.etiqueta-detalhes {
+  background-color: #f1f5f9;
+  color: var(--azul-escuro);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+}
+
+/* Divisor layout médio */
+@media (min-width: 768px) {
+  .border-end-md {
+    border-right: 1px solid var(--cor-borda);
+  }
+}
+
+/* Cards Relacionados */
+.card-relacionado {
+  border-radius: 12px !important;
+  border: 1px solid var(--cor-borda) !important;
+  transition: transform 0.2s ease;
+}
+
+.card-relacionado:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.05);
+}
+
+.titulo-relacionado {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-escuro);
+}
+
+.borda-azul {
+  border-top: 3px solid var(--azul-principal) !important;
+}
+
+.borda-rosa {
+  border-top: 3px solid var(--rosa) !important;
+}
+
+/* Painel de Inscrição Lateral */
+.lateral-inscricao {
+  position: sticky;
+  top: 94px;
+  border: 1px solid var(--cor-borda) !important;
+}
+
+.badge-status-vaga {
+  background-color: #fef2f2;
+  color: var(--vermelho);
+  border: 1px solid #fecaca;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.preco-vaga {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--azul-escuro);
+}
+
+.icone-img-lateral {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.subtitulo-detalhes-lateral {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+}
+
+.logo-instituicao-lateral {
+  width: 48px;
+  height: 48px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+}
+
+.icone-img-grande-lateral {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Botões Customizados */
+.btn-primary {
+  background-color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+  border-radius: 8px !important;
+}
+
+.btn-primary:hover {
+  background-color: #1245b5 !important;
+  border-color: #1245b5 !important;
+}
+
+.btn-outline-primary {
+  color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+  border-radius: 8px !important;
+}
+
+.btn-outline-primary:hover {
+  color: var(--branco) !important;
+  background-color: var(--azul-principal) !important;
+}
+
+/* Modal de Sucesso */
+.modal-content {
+  border-radius: 16px !important;
+}
+
+.modal-sucesso-icone {
+  width: 80px;
+  height: 80px;
+  background-color: #e6f7ed;
+  border-radius: 50%;
+}
+
+.modal-sucesso-titulo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+}
